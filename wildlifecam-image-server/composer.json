@@ -1,0 +1,27 @@
+{
+  "name": "loweffortkandidat/wildlifecam-image-server",
+  "description": "Wildlife Camera Server for the EMLI mini-project @ SDU, F24",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Jonas Kaad",
+      "email": "jokaa17@student.sdu.dk"
+    },
+    {
+      "name": "Victor Boye",
+      "email": "viboy20@student.sdu.dk"
+    },
+    {
+      "name": "Sebastian Mondrup",
+      "email": "semon20@student.sdu.dk"
+    },
+    {
+      "name": "Alexander Nørup",
+      "email": "alnoe20@student.sdu.dk"
+    }
+  ],
+  "require": {
+    "pecee/simple-router": "5.4.1.7"
+  }
+}

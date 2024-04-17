@@ -1,0 +1,3 @@
+<?php
+
+const WILDLIFE_IMG_BASE_PATH = __DIR__ . "/../debug_images/";
