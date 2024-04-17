@@ -31,7 +31,7 @@ This can be done either using the CLI:
 
 ```bash
 docker build -t wildlife-image-server .
-docker run -p 6050:80 -v $(PWD)/src/:/var/www/html/ -v $(PWD)/vendor:/var/www/vendor/ --rm --name "WildLifeImageServer" wildlife-image-server
+docker run -p 6050:80 -v $(PWD)/src/:/var/www/html/ -v $(PWD)/debug_images:/var/www/debug_images -v $(PWD)/vendor:/var/www/vendor --rm --name "WildLifeImageServer" wildlife-image-server
 ```
 
 The API should then be accessible on: http://localhost:6050
