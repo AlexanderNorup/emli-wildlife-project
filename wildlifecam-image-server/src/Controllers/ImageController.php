@@ -11,6 +11,9 @@ use PharData;
 
 class ImageController
 {
+    /**
+     * @type WildLifeImage[]
+     */
     private array $files = [];
 
     public function __construct()
