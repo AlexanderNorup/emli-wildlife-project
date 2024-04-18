@@ -80,7 +80,37 @@ class ImageController
             SimpleRouter::response()->httpCode(404)->json(["message" => "Image not found"]);
         }
 
-        SimpleRouter::response()->json($this->files[$id]->getMetaData());
+        header("Content-type: application/json");
+        readfile($this->files[$id]->getMetaFile());
+    }
+
+    public function acknowledgedDownload($id)
+    {
+        if (!isset($this->files[$id])) {
+            SimpleRouter::response()->httpCode(404)->json(["message" => "Image not found"]);
+        }
+
+        $requestBody = file_get_contents('php://input');
+        if(!trim($requestBody) || strlen($requestBody) > 50) {
+            SimpleRouter::response()->httpCode(400)->json(["message" => "This request requires the drone-name to be supplied as plain-text (<=50 chars) in the request body."]);
+        }
+
+        $meta = $this->files[$id]->getMetaData();
+        if($meta == NULL){
+            SimpleRouter::response()->httpCode(500)->json(["message" => "The metadata for this file is not valid JSON, so we cannot acknowledge it. Contact a developer."]);
+        }
+        $meta["Drone Copy"] = [
+            "Drone ID" => $requestBody,
+            "Seconds Epoch" => microtime(true),
+        ];
+        file_put_contents($this->files[$id]->getMetaFile(), json_encode($meta));
+
+        // If the client ONLY accepts text/plain, we give them that
+        if ($_SERVER["HTTP_ACCEPT"] == "text/plain") {
+            return "Download Acknowledged";
+        }
+
+        SimpleRouter::response()->json(["message" => "Download acknowledged"]);
     }
 
     private function recursivelyFindImages($searchDir, $wildLifeImages, $depth = 0)

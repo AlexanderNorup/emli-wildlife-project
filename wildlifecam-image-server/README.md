@@ -5,16 +5,16 @@ This is a PHP server that runs on the wildlife-camera that the drone will connec
 ## The API
 This project is a simplied API that has the following endpoints:
 
-| Endpoint                        | Description                                                                                                                                      |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| GET /                           | Overview of commands                                                                                                                             |
-| GET /images                     | Get a list of all image-ids on the camera                                                                                                        |
-| GET /images?unacknowledged=true | Get a list of all undownloaded image-ids on the camera                                                                                           |   
-| GET /images/\<id\>              | Get a tarball of the image along with JSON metadata                                                                                              |
-| GET /images/\<id\>/raw          | Get the image file                                                                                                                               |
-| GET /images/\<id\>/meta         | Get the image metadata JSON file                                                                                                                 |
-| POST /images/\<id\>/ack         | **⚠️ Requires API key**<br/>Marks an image as successfully downloaded                                                                            |
-| POST /time                      | **⚠️ Requires API key**<br/>Sets the time of the wild-life camera. The new time should be supplied in the request body a raw **ISO 8601** string |
+| Endpoint                        | Description                                                                                                                                                                        |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GET /                           | Overview of commands                                                                                                                                                               |
+| GET /images                     | Get a list of all image-ids on the camera                                                                                                                                          |
+| GET /images?unacknowledged=true | Get a list of all undownloaded image-ids on the camera                                                                                                                             |   
+| GET /images/\<id\>              | Get a tarball of the image along with JSON metadata                                                                                                                                |
+| GET /images/\<id\>/raw          | Get the image file                                                                                                                                                                 |
+| GET /images/\<id\>/meta         | Get the image metadata JSON file                                                                                                                                                   |
+| POST /images/\<id\>/ack         | **⚠️ Requires API key**<br/>Marks an image as successfully downloaded. The request must contain a plaintext request body with the name of the drone that has downloaded the image. |
+| POST /time                      | **⚠️ Requires API key**<br/>Sets the time of the wild-life camera. The new time should be supplied in the request body a raw **ISO 8601** string                                   |
 
 
 ## API key
