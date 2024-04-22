@@ -1,0 +1,3 @@
+ollama run llava:7b "describe /Users/jonas/Development/SDUProjects/Semester8/EmbeddedLinux/test_images/al.png"
+
+ollama run llava:7b "describe /Users/jonas/Development/SDUProjects/Semester8/EmbeddedLinux/emli-wildlife-project/cloud-server/images/2024-05-01/165501_123.jpg"

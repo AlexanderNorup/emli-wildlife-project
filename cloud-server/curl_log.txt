@@ -1,0 +1,37 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92   2802   7161 --:--:-- --:--:-- --:--:-- 10666
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  15782  40333 --:--:-- --:--:-- --:--:-- 64000
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  25843  66044 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  17316  44252 --:--:-- --:--:-- --:--:-- 64000
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  21015  53706 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  23841  60927 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  23622  60367 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  25531  65248 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  23872  61007 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  26354  67349 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  23331  59624 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   128  100    36  100    92  24390  62330 --:--:-- --:--:-- --:--:--  125k
+{"error":"unsupported image format"}
