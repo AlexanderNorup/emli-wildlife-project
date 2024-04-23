@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitors the rainsensor over serial and pushes messages to MQTT
+
+[Service]
+WorkingDirectory=/home/wildlifecam/
+ExecStart=/home/wildlifecam/monitor_rain_sensor.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

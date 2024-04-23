@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs the wiper when instructed over MQTT
+
+[Service]
+WorkingDirectory=/home/wildlifecam/
+ExecStart=/home/wildlifecam/wipe_controller.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

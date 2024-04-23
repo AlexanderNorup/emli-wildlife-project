@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatically takes a picture everyv x minutes
+
+[Service]
+WorkingDirectory=/home/wildlifecam/
+ExecStart=/home/wildlifecam/timed_photo.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

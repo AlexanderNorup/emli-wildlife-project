@@ -1,0 +1,10 @@
+[Unit]
+Description=Detects motion and saves pictures on motion
+
+[Service]
+WorkingDirectory=/home/wildlifecam/
+ExecStart=/home/wildlifecam/save_motion.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
