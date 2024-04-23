@@ -1,0 +1,14 @@
+{
+  "File Name": "143214_564.jpg",
+  "Create Date": "2024-04-17 14:32:14.564+02:00",
+  "Create Seconds Epoch": 1713357134.564,
+  "Trigger": "Time",
+  "Subject Distance": 0.1,
+  "Exposure Time": "1/33",
+  "ISO": 200,
+  "Credits": "Matteo Di Iorio, Unsplash: https://unsplash.com/photos/four-black-and-white-zebras-surrounded-by-grass-v-9hnUGyuOU",
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " The image shows a group of zebras in an outdoor setting, likely a savanna or grassland habitat. There are three zebras standing close to each other, with their distinct black and white stripes visible on their bodies. They appear to be grazing or resting near a small tree or shrub. The background is open and suggests a natural environment. "
+  }
+}
