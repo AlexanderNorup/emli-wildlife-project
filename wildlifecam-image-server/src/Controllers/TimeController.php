@@ -17,7 +17,7 @@ class TimeController
         $success = !SET_TIME_ENABLED;
         $timeCommandValue = date("Y-m-d H:i:s", $parsedTime);
         if(SET_TIME_ENABLED){
-            exec("date -s \"$timeCommandValue\"", $_,$returnValue);
+            exec("sudo date -s \"$timeCommandValue\"", $_,$returnValue);
             $success = $returnValue == 0;
         }
 
