@@ -3,6 +3,9 @@
 # Ollava endpoint
 ENDPOINT="http://localhost:11434/api/generate"
 
+# Folder containing images and sidecar files
+PATH_TO_IMAGES="./images"
+
 # Function to check if the annotation object already exists in the JSON file
 annotation_exists() {
     local json_file="$1"
@@ -60,12 +63,13 @@ process_images_in_directory() {
 }
 
 # Iterating through each directory in the images folder
-for directory in ./images/*; do
+for directory in $PATH_TO_IMAGES/*; do
     # Check if the entry is actually a directory
     if [ -d "$directory" ]; then
         # Process images in the directory
         process_images_in_directory "$directory"
     fi
-    echo "Finished annotating all images"
 done
 
+echo "Finished annotating all image. Pushing to GitHub..."
+./upload.sh
