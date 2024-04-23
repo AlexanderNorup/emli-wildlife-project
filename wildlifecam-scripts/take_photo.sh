@@ -1,28 +1,27 @@
 #!/bin/bash
+JSONDATE="$(date +%Y-%m-%d) $(date +%H:%M:%S).$(date +%N | cut -b1-3)$(date +%:z)"
 
-DATE=$(date +%H%M%S)
-MS=$(date +%N | cut -b1-3)
-FILENAME=$DATE\_$MS.jpg
+TIMEMS=$(echo $JSONDATE | awk -F'[ +]' '{print $2}' | awk -F'[:.]' '{print $1$2$3"_"$4}')
+DATE=$(echo $JSONDATE | awk '{print $1}')
+FILENAME=$TIMEMS.jpg
+FOLDERNAME=/WildlifeCam/$DATE
 
-FOLDERNAME=$(date +%Y-%m-%d)
 
 if [ ! -d $FOLDERNAME ]; then
-	mkdir $FOLDERNAME
+        mkdir $FOLDERNAME
+        chmod 777 $FOLDERNAME
 fi
 
 rpicam-still -t 0.01 -o $FOLDERNAME\/$FILENAME
 
-# creating metadata file
-
-CREATEDATE=$(exiftool -T -createdate $FOLDERNAME/$FILENAME)
-CREATESECONDS=$(echo $CREATEDATE | sed 's/:/-/;s/:/-/' | date +%s)
-TRIGGER=${1:-"Time"}
-SUBJECTDISTANCE=$(exiftool -T -subjectdistance $FOLDERNAME/$FILENAME)
-EXPOSURETIME=$(exiftool -T -exposuretime $FOLDERNAME/$FILENAME)
-ISO=$(exiftool -T -ISO $FOLDERNAME/$FILENAME)
-
 JSONFILENAME=$(echo $FILENAME | sed 's/jpg/json/g')
-JSON="{\"File Name\": \"$FILENAME\", \"Create Date\": \"$CREATEDATE\", \"Create Seconds Epoch\": $CREATESECONDS, \"Trigger\": \"$TRIGGER\", \"Subject Distance\": \"$SUBJECTDISTANCE\", \"Exposure Time\": \"$EXPOSURETIME\", \"ISO\": $ISO}"
 
-echo $JSON > $FOLDERNAME/$JSONFILENAME
+TRIGGER=${1:-"TIME"}
 
+JSONDATA=$(./create_metadata.sh $FOLDERNAME $FILENAME "$TRIGGER" "$JSONDATE")
+echo $JSONDATA > $FOLDERNAME/$JSONFILENAME
+
+chmod 777 $FOLDERNAME/$FILENAME
+chmod 777 $FOLDERNAME/$JSONFILENAME
+
+./log_wildlife.sh "$TRIGGER triggered the wildlife cam"
