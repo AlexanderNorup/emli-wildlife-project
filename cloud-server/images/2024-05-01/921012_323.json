@@ -1,0 +1,13 @@
+{
+  "File Name": "921012_323.jpg",
+  "Create Date": "2024-04-22 12:05:01.123+02:00",
+  "Create Seconds Epoch": 1713325701.123,
+  "Trigger": "Time",
+  "Subject Distance": 0.4,
+  "Exposure Time": "1/33",
+  "ISO": 200,
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " The image shows a group of zebras walking in a line across a field with some scattered trees in the background. To the right, there is a giraffe standing among the trees. Both species are commonly found in African savannas. The scene appears to be a natural habitat where these animals coexist and share resources. "
+  }
+}

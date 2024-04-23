@@ -1,10 +1,14 @@
 {
-	"File Name": "165501_123.jpg",
-	"Create Date": "2024-04-17 16:55:01.123+02:00",
-	"Create Seconds Epoch": 1713365701.123,
-	"Trigger": "Time",
-	"Subject Distance": 0.8,
-	"Exposure Time": "1/33",
-	"ISO": 200,
-	"Credits": "Wade Lambert, Unsplash: https://unsplash.com/photos/male-brown-lion-lying-on-grass-VfdOzbZkW1w"
+  "File Name": "165501_123.jpg",
+  "Create Date": "2024-04-17 16:55:01.123+02:00",
+  "Create Seconds Epoch": 1713365701.123,
+  "Trigger": "Time",
+  "Subject Distance": 0.8,
+  "Exposure Time": "1/33",
+  "ISO": 200,
+  "Credits": "Wade Lambert, Unsplash: https://unsplash.com/photos/male-brown-lion-lying-on-grass-VfdOzbZkW1w",
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " The image shows a majestic lion standing on a rocky outcropping in what appears to be a savanna or grassland environment. The lion is looking towards the camera, and there are two hyenas lying on the ground nearby. There's also a lush green field in the background, under a blue sky with some clouds. The overall atmosphere of the image suggests it might have been taken during a safari or wildlife tour. "
+  }
 }
