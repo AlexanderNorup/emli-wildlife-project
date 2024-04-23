@@ -5,11 +5,13 @@ namespace LowEffortKandidat;
 require_once "../vendor/autoload.php";
 require_once "Controllers/TimeController.php";
 require_once "Controllers/ImageController.php";
+require_once "Controllers/LogController.php";
 require_once "Middlewares/ApiKeyAuthMiddleware.php";
 
 require_once "config.php";
 
 use LowEffortKandidat\Controllers\ImageController;
+use LowEffortKandidat\Controllers\LogController;
 use LowEffortKandidat\Controllers\TimeController;
 use LowEffortKandidat\Middlewares\ApiKeyAuthMiddleware;
 use Pecee\Http\Request;
@@ -20,6 +22,8 @@ SimpleRouter::get('/images', [ImageController::class, 'getAllImages']);
 SimpleRouter::get('/images/{id}', [ImageController::class, 'getTarBall']);
 SimpleRouter::get('/images/{id}/raw', [ImageController::class, 'viewImage']);
 SimpleRouter::get('/images/{id}/meta', [ImageController::class, 'viewMetadata']);
+
+SimpleRouter::get('/logs', [LogController::class, 'getLogs']);
 
 //Routes requiring auth
 SimpleRouter::group(['middleware' => ApiKeyAuthMiddleware::class], function () {

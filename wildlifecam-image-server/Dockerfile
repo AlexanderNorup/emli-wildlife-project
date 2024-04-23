@@ -6,6 +6,9 @@ FROM php:8.2-apache
 RUN apt-get update && \
       apt-get -y install sudo
 
+## Install systemd for journalctl command
+RUN apt-get -y install systemd
+
 ## Allow the www-data user to run "sudo date"
 RUN echo 'www-data ALL=(ALL) NOPASSWD: /usr/bin/date' >> /etc/sudoers
 
