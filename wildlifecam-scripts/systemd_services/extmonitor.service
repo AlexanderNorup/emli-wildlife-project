@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitors for external picture-requests via MQTT
+
+[Service]
+WorkingDirectory=/home/wildlifecam/
+ExecStart=/home/wildlifecam/monitor_external_mqtt.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
