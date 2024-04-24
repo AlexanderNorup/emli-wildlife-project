@@ -33,6 +33,7 @@ class LogController
             $output = "-n=".intval($_GET['limit']);
         }
 
+        header("Content-Type: text/plain");
         system("journalctl $limit $since $until $output $sort -t " . LOGS_TAG);
     }
 }
