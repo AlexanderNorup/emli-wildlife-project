@@ -8,4 +8,6 @@ const API_KEYS_SHA512 = [
 
 const API_KEY_SALT = "SetMeToSomethingRandom";
 
+const LOGS_TAG = "wildlifelogs";
+
 const SET_TIME_ENABLED = false; // If "false", the time-endpoint will still exist, but it won't do anything (for debugging).
