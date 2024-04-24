@@ -30,7 +30,7 @@ class LogController
 
         $limit = "";
         if(isset($_GET['limit']) && is_numeric($_GET['limit'])){
-            $output = "-n=".intval($_GET['limit']);
+            $limit = "-n=".intval($_GET['limit']);
         }
 
         header("Content-Type: text/plain");
