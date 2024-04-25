@@ -17,13 +17,13 @@ rpicam-still -t 0.01 -o $FOLDERNAME/$FILE1
 TIME1=$(date +%s)
 
 while true; do
+        DATE=$(date +%Y-%m-%d)
         TIME2=$(date +%s)
         DIFF=$((TIME2-TIME1))
         if [ "$DIFF" -ge 1 ]; then
                 JSONDATE="$DATE $(date +%H:%M:%S).$(date +%N | cut -b1-3)$(date +%:z)"
 
                 TIMEMS=$(echo $JSONDATE | awk -F'[ +]' '{print $2}' | awk -F'[:.]' '{print $1$2$3"_"$4}')
-                DATE=$(echo $JSONDATE | awk '{print $1}')
                 FILE2=$DATE\_$TIMEMS.jpg
 
                 rpicam-still -t 0.01 -o $FOLDERNAME/$FILE2
