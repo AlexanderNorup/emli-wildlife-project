@@ -7,6 +7,11 @@ FILE1=$DATE\_$TIME\_$MS.jpg
 
 FOLDERNAME=motions
 
+if [ -d "$FOLDERNAME" ]; then
+        rm -r "$FOLDERNAME"
+fi
+
+mkdir -p "$FOLDERNAME"
 
 rpicam-still -t 0.01 -o $FOLDERNAME/$FILE1
 TIME1=$(date +%s)
