@@ -4,13 +4,16 @@
 ENDPOINT="http://localhost:11434/api/generate"
 
 # Folder containing images and sidecar files
-PATH_TO_IMAGES="./test_images"
+PATH_TO_IMAGES=${1:-"./test_images"}
+
 
 # Function to check if the annotation object already exists in the JSON file
 annotation_exists() {
     local json_file="$1"
     jq -e '.Annotation' "$json_file" > /dev/null
 }
+
+ANY_ANNOTATED=false
 
 # Process all images in a directory
 process_images_in_directory() {
@@ -57,6 +60,7 @@ process_images_in_directory() {
                 
                 # Append the annotation object to the existing JSON file
                 jq ". + $annotation" "$json_file" > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
+                ANY_ANNOTATED=true
             fi
         fi
     done
@@ -72,4 +76,9 @@ for directory in $PATH_TO_IMAGES/*; do
 done
 
 echo "Finished annotating all image. Pushing annotations to GitHub..."
-./upload.sh
+if [ $ANY_ANNOTATED == true ]; then
+    echo "Uploading annotated files to git"
+    ./upload.sh $PATH_TO_IMAGES
+else
+    echo "No new annotated files."
+fi

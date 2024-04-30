@@ -1,11 +1,12 @@
 #!/bin/bash
+PATH_TO_IMAGES=${1:-"./test_images"}
 
 # Set the committer information
 git config --local user.name "Wildlife Drone"
-git config --local user.email "wildlife@drone.com"
+git config --local user.email "wildlife@example.com"
 
 # Navigate to the directory containing the images
-cd "$(dirname "$0")/images" || exit
+cd $PATH_TO_IMAGES || exit
 
 # Generate a unique commit message with timestamp
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
