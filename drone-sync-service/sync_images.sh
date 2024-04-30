@@ -3,7 +3,7 @@
 #Constants
 outputDirectory="synced_images"
 droneName="Drone-1337"
-cameraHost="localhost:6050"
+cameraHost="192.168.10.1"
 apiKey="zebra"
 
 function waitForConnection {

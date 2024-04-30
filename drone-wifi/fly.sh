@@ -29,12 +29,13 @@ while true; do
             echo "Connected to WiFi network: $SSID"
         else
             echo "Failed to connect to WiFi network: $SSID. Retrying..."
-        fi
+            sleep 2
+	fi
     done
 
     # Connected, do something every 2 seconds
     while check_connection; do
-        echo "Connected to WiFi network: $SSID"
+        ./log_signal_quality.sh
         sleep 2
     done
 
