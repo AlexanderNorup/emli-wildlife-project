@@ -5,28 +5,31 @@ skinparam rectangle {
     roundCorner<<Process>> 54
 }
 
+note "All processes log events to journald" as logNote
 
 frame WildlifeCam {
+  
+
   frame RaspberryPi {
     rectangle "Take Photo" <<Process>> as rpiPhoto
-    rectangle "Timing" <<Process>> as rpiTime
+    rectangle "5 Minute Timer" <<Process>> as rpiTime
     rectangle "Detect Motion" <<Process>> as rpiMotion
     rectangle "External Subscriber" <<Process>> as rpiExternal
     rectangle "Rain Detector" <<Process>> as rpiRain
-    rectangle "Wipe" <<Process>> as rpiWipe
+    rectangle "Wipe Controller" <<Process>> as rpiWipe
     rectangle "Access Point" as rpiAcc
-    rectangle "Web Server" as rpiWeb
+    rectangle "Web Server" <<Process>> as rpiWeb
     
   }
   
   frame ESP8266 {
-    rectangle "Externally Triggered" <<Process>> as espTrig
-    rectangle "Publish" <<Process>> as espPublish
+    rectangle "Monitor Button" <<Process>> as espTrig
+    rectangle "Publish Event" <<Process>> as espPublish
   }
   
   frame RPico {
     rectangle "Rain detection" <<Process>> as pcDetect
-    rectangle "Wipe" <<Process>> as pcWipe
+    rectangle "Servo Controller" <<Process>> as pcWipe
   }
 }
 
@@ -41,22 +44,24 @@ frame Cloud {
   rectangle "Upload" <<Process>> as cUp
 }
 
+logNote .-right- RaspberryPi
 
-pcDetect -up-> rpiRain
-rpiRain -> rpiWipe
-rpiWipe -> pcWipe
+
+pcDetect -up-> rpiRain : Serial
+rpiRain -> rpiWipe : MQTT
+rpiWipe -> pcWipe : Serial
 
 rpiTime -> rpiPhoto
 rpiMotion -> rpiPhoto
 rpiExternal -left-> rpiPhoto
 
 espTrig -> espPublish
-espPublish -up-> rpiExternal
+espPublish -up-> rpiExternal : MQTT
 
 dConnect -down-> rpiAcc
-dSync -> rpiWeb
+dSync <-> rpiWeb : HTTP
 
-Drone -> Cloud
+Drone -> Cloud : "Transfer Images"
 
 
 
