@@ -12,8 +12,8 @@ publish_message() {
 # Loop and continuously read from /dev/ttyACM0
 while true; do
     # Read JSON data from /dev/ttyACM0
-    read WIPER_JSON <$DEVICE
-
+    WIPER_JSON=$(cat $DEVICE | head -1)
+    echo "$WIPER_JSON"
     # If statement to check for json_error or angle_error
     if [[ "$WIPER_JSON" != *"json_error"* && "$WIPER_JSON" != *"angle_error"* ]]; then
         # Extract rain_detect from the JSON data
@@ -30,7 +30,7 @@ while true; do
 	./log_wildlife.sh "Rain detected"
 	sleep 10
     fi
-
+    
     # Sleep for 1 second
     sleep 1
 done
