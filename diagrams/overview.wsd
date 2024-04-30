@@ -1,14 +1,10 @@
 @startuml
 
-
 skinparam rectangle {
     roundCorner<<Process>> 54
 }
 
-note "All processes log events to journald" as logNote
-
 frame WildlifeCam {
-  
 
   frame RaspberryPi {
     rectangle "Take Photo" <<Process>> as rpiPhoto
@@ -19,8 +15,8 @@ frame WildlifeCam {
     rectangle "Wipe Controller" <<Process>> as rpiWipe
     rectangle "Access Point" as rpiAcc
     rectangle "Web Server" <<Process>> as rpiWeb
-    
   }
+  note top of RaspberryPi: All processes log events to journald
   
   frame ESP8266 {
     rectangle "Monitor Button" <<Process>> as espTrig
@@ -31,39 +27,55 @@ frame WildlifeCam {
     rectangle "Rain detection" <<Process>> as pcDetect
     rectangle "Servo Controller" <<Process>> as pcWipe
   }
+
 }
 
 frame Drone {
+  label " " as droneLabel
   rectangle "Connect" <<Process>> as dConnect
   rectangle "Download Images" <<Process>> as dSync
   rectangle "Log Wifi" <<Process>> as dLogWifi
 }
 
 frame Cloud {
+  label " " as cloudLabel
   rectangle "Annotate" <<Process>> as cAnn
   rectangle "Upload" <<Process>> as cUp
 }
 
-logNote .-right- RaspberryPi
 
-
-pcDetect -up-> rpiRain : Serial
+pcDetect -d-> rpiRain : Serial
 rpiRain -> rpiWipe : MQTT
-rpiWipe -> pcWipe : Serial
+rpiWipe -u-> pcWipe : Serial
 
-rpiTime -> rpiPhoto
-rpiMotion -> rpiPhoto
-rpiExternal -left-> rpiPhoto
+rpiTime -u-> rpiPhoto
+rpiMotion -u-> rpiPhoto
+rpiExternal -u-> rpiPhoto
 
 espTrig -> espPublish
-espPublish -up-> rpiExternal : MQTT
+espPublish -u-> rpiExternal : MQTT
 
-dConnect -down-> rpiAcc
+dConnect -> rpiAcc
 dSync <-> rpiWeb : HTTP
 
-Drone -> Cloud : "Transfer Images"
+droneLabel -d-> cloudLabel : "Transfer Images"
 
+'placement stuff'
 
+rpiMotion -[hidden]right-> rpiExternal
+rpiTime -[hidden]right-> rpiExternal
+
+rpiWeb -[hidden]r-> rpiTime
+rpiAcc -[hidden]d-> rpiWeb
+dSync -[hidden]u-> dConnect
+
+rpiAcc -[hidden]l-> rpiRain
+rpiAcc -[hidden]l-> rpiWipe
+rpiAcc -[hidden]l-> rpiPhoto
+
+cloudLabel -[hidden]l-> cAnn
+droneLabel -[hidden]u-> dLogWifi
+droneLabel -[hidden]l-> dSync
 
 
 @enduml
