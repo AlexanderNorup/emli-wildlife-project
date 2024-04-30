@@ -1,0 +1,15 @@
+@startuml
+
+
+title "Rain Detection and Lens Wiping"
+
+participant Pico
+participant "Raspberry Pi" as RPi
+queue MQTT
+
+Pico -> RPi : Sense Rain
+RPi -> MQTT : Publish Rain Event 
+MQTT -> RPi : Receive Rain Event
+RPi -> Pico : Send wipe command
+
+@enduml
