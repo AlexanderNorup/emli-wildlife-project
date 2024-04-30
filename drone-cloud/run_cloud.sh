@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_FOLDER="./test_images"
+IMAGE_FOLDER="../drone-sync-service/synced_images"
 
 echo "Starting cloud script. Assuming a valid internet connection"
 while true; do
