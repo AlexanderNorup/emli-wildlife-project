@@ -1,0 +1,64 @@
+@startuml
+
+
+skinparam rectangle {
+    roundCorner<<Process>> 54
+}
+
+
+frame WildlifeCam {
+  frame RaspberryPi {
+    rectangle "Take Photo" <<Process>> as rpiPhoto
+    rectangle "Timing" <<Process>> as rpiTime
+    rectangle "Detect Motion" <<Process>> as rpiMotion
+    rectangle "External Subscriber" <<Process>> as rpiExternal
+    rectangle "Rain Detector" <<Process>> as rpiRain
+    rectangle "Wipe" <<Process>> as rpiWipe
+    rectangle "Access Point" as rpiAcc
+    rectangle "Web Server" as rpiWeb
+    
+  }
+  
+  frame ESP8266 {
+    rectangle "Externally Triggered" <<Process>> as espTrig
+    rectangle "Publish" <<Process>> as espPublish
+  }
+  
+  frame RPico {
+    rectangle "Rain detection" <<Process>> as pcDetect
+    rectangle "Wipe" <<Process>> as pcWipe
+  }
+}
+
+frame Drone {
+  rectangle "Connect" <<Process>> as dConnect
+  rectangle "Download Images" <<Process>> as dSync
+  rectangle "Log Wifi" <<Process>> as dLogWifi
+}
+
+frame Cloud {
+  rectangle "Annotate" <<Process>> as cAnn
+  rectangle "Upload" <<Process>> as cUp
+}
+
+
+pcDetect -up-> rpiRain
+rpiRain -> rpiWipe
+rpiWipe -> pcWipe
+
+rpiTime -> rpiPhoto
+rpiMotion -> rpiPhoto
+rpiExternal -left-> rpiPhoto
+
+espTrig -> espPublish
+espPublish -up-> rpiExternal
+
+dConnect -down-> rpiAcc
+dSync -> rpiWeb
+
+Drone -> Cloud
+
+
+
+
+@enduml
