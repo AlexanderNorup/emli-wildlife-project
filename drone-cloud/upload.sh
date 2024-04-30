@@ -19,7 +19,7 @@ git add "*.json"
 git commit -m "$commit_message"
 
 # Push the changes to the remote repository
-git push origin annotate 
+git push
 
 # Navigate back to the original directory
 cd -
