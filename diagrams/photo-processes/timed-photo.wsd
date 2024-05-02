@@ -1,0 +1,16 @@
+@startuml
+
+  participant "Timer" as rpiTime
+  participant "Take Photo" as rpiPhoto
+
+loop
+  alt Seconds since\nlast triggered >= 300
+    rpiTime -> rpiPhoto : Take Photo\n(Trigger: Time)
+    rpiPhoto -> rpiPhoto : Get Current Time
+    rpiPhoto <- rpiPhoto : Create Metadata\n(Trigger: Time)
+    rpiPhoto -> rpiPhoto : Take Photo\nUsing rpicam
+    rpiPhoto <- rpiPhoto : Save Photo\n& Metadata
+  else Else
+    rpiTime -> rpiTime : Wait 1 second
+end
+@enduml
