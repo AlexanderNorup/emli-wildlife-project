@@ -6,7 +6,7 @@
 
 loop
   alt Seconds since\nlast triggered >= 300
-    rpiTime -> rpiPhoto : Take Photo\n(Trigger: Time)
+    rpiTime -> rpiPhoto : Trigger: Time
     rpiPhoto <- rpiPhoto : Get Current Time
     rpiPhoto -> rpiMeta : Trigger: Time
     rpiMeta -> rpiPhoto : Return Metadata

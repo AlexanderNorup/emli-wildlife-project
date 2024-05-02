@@ -16,9 +16,9 @@ box "Raspberry Pi" #LightCoral
 end box
 
 espBtn -> espPub : Button Pressed
-espPub -> mqtt : Publish\n"External" Event
-mqtt -> rpiSub : Consume\n"External" Event
-rpiSub -> rpiPhoto : Take Photo\n(Trigger: External)
+espPub -> mqtt : "External" Event
+mqtt -> rpiSub : "External" Event
+rpiSub -> rpiPhoto : Trigger: External
 rpiPhoto <- rpiPhoto : Get Current Time
 rpiPhoto -> rpiMeta : Trigger: External
 rpiMeta -> rpiPhoto : Return Metadata
