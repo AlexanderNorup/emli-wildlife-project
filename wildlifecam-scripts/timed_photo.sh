@@ -8,5 +8,7 @@ while true; do
         if [ "$difference" -ge 300 ]; then
                 last_run=$current_time
                 ./take_photo.sh
+        else
+                sleep 1
         fi
 done
