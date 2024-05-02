@@ -12,6 +12,7 @@ end box
 box "Raspberry Pi" #LightCoral
   participant "MQTT Subscriber" as rpiSub
   participant "Take Photo" as rpiPhoto
+  participant "Create Metadata" as rpiMeta
 end box
 
 espBtn -> espPub : Button Pressed
@@ -19,7 +20,8 @@ espPub -> mqtt : Publish\n"External" Event
 mqtt -> rpiSub : Consume\n"External" Event
 rpiSub -> rpiPhoto : Take Photo\n(Trigger: External)
 rpiPhoto <- rpiPhoto : Get Current Time
-rpiPhoto <- rpiPhoto : Create Metadata\n(Trigger: External)
+rpiPhoto -> rpiMeta : Trigger: External
+rpiMeta -> rpiPhoto : Return Metadata
 rpiPhoto <- rpiPhoto : Take Photo\nUsing rpicam
-rpiPhoto <- rpiPhoto : Save Photo\n& Metadata
+rpiPhoto -> rpiPhoto : Save Photo\n& Metadata
 @enduml
