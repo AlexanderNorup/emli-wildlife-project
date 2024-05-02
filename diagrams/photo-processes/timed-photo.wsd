@@ -14,5 +14,6 @@ loop
     rpiPhoto -> rpiPhoto : Save Photo\n& Metadata
   else Else
     rpiTime -> rpiTime : Wait 1 second
+  end
 end
 @enduml
