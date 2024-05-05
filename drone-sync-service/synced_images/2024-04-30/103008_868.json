@@ -1,0 +1,13 @@
+{
+  "File Name": "103008_868.jpg",
+  "Create Date": "2024-04-30 10:30:08.868+02:00",
+  "Create Seconds Epoch": 1714465813,
+  "Trigger": "Motion",
+  "Subject Distance": "1.063829787 m",
+  "Exposure Time": "1/41",
+  "ISO": 112,
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " This is an image of a digital art piece that appears to be a distorted, abstract pattern. The artwork features a repetitive design with various shapes and lines creating a complex visual effect. The colors are muted, predominantly featuring shades of gray, brown, and black against a lighter background. "
+  }
+}

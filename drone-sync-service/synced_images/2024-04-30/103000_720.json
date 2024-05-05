@@ -1,0 +1,13 @@
+{
+  "File Name": "103100_720.jpg",
+  "Create Date": "2024-04-30 10:31:00.720+02:00",
+  "Create Seconds Epoch": 1714465865,
+  "Trigger": "Motion",
+  "Subject Distance": "0.5515719801 m",
+  "Exposure Time": "1/35",
+  "ISO": 112,
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " The image shows a person standing in front of a wall with a large window. The person appears to be a young adult, wearing glasses and has short hair. They are smiling at the camera and looking directly into it. Behind them is an office environment, with what looks like a desk or counter in the foreground, and a blurred background that suggests a modern workspace. The lighting in the room seems artificial and bright, suggesting an indoor setting. "
+  }
+}

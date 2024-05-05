@@ -1,0 +1,13 @@
+{
+  "File Name": "103020_333.jpg",
+  "Create Date": "2024-04-30 10:30:20.333+02:00",
+  "Create Seconds Epoch": 1714465824,
+  "Trigger": "Motion",
+  "Subject Distance": "0.365497076 m",
+  "Exposure Time": "1/33",
+  "ISO": 122,
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " The image is a digital representation or manipulation, showing an abstract pattern with distorted lines and shapes that give the impression of depth. It appears to be an artistic or possibly digitally enhanced photo of a surface with concentric patterns. There are no texts on the image. The style suggests it could be an illustration or artwork designed to create a three-dimensional effect from two-dimensional elements, possibly for aesthetic purposes or as a form of digital art. "
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "File Name": "110421_954.jpg",
+  "Create Date": "2024-04-30 11:04:21.954+02:00",
+  "Create Seconds Epoch": 1714467866,
+  "Trigger": "Motion",
+  "Subject Distance": "9.345794393 m",
+  "Exposure Time": "1/29",
+  "ISO": 200,
+  "Annotation": {
+    "Source": "llava:7b",
+    "Description": " This is a zoomed-in image featuring what appears to be a close-up of a piece of machinery or equipment, possibly part of an engine given the text \"COOLING\" on it. The background shows a blurred industrial setting with what looks like a cooling system, and there are digital overlay effects that make the image look glitchy and surreal, with distorted lines and colorful dots. There's no clear indication of what the machine is specifically used for or where it is located, but the overall style suggests a high-tech or industrial environment. "
+  }
+}
