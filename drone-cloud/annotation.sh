@@ -4,7 +4,7 @@
 ENDPOINT="http://localhost:11434/api/generate"
 
 # Folder containing images and sidecar files
-PATH_TO_IMAGES=${1:-"./test_images"}
+PATH_TO_IMAGES=${1:-"../drone-sync-service/synced_images"}
 
 
 # Function to check if the annotation object already exists in the JSON file
@@ -41,7 +41,7 @@ process_images_in_directory() {
                 echo "Annotating image: $image_file"
 
                 # Construct the JSON payload with the base64-encoded image
-                JSON_PAYLOAD="{\"model\": \"llava:7b\", \"prompt\": \"What is in this picture?\", \"stream\": false, \"images\": [\"$image_base64\"]}"
+                JSON_PAYLOAD="{\"model\": \"llava:7b\", \"prompt\": \"describe this image very briefly\", \"stream\": false, \"images\": [\"$image_base64\"]}"
                 echo $JSON_PAYLOAD > "payload.json"
                 response_file="${ANNOTATION_DIRECTORY}/$(basename "${image_file%.*}").json"
                 # Send the request using curl
@@ -59,7 +59,7 @@ process_images_in_directory() {
                 annotation="{\"Annotation\": {\"Source\": \"$model\", \"Description\": \"$description\"}}"
                 
                 # Append the annotation object to the existing JSON file
-                jq ". + $annotation" "$json_file" > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
+                jq --arg model "$model" --arg description "$description" '. += {Annotation: {Source: $model, Description: $description}}' "$json_file" > "$json_file.tmp" && mv "$json_file.tmp" "$json_file"
                 ANY_ANNOTATED=true
             fi
         fi

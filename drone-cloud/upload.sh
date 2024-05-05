@@ -1,5 +1,5 @@
 #!/bin/bash
-PATH_TO_IMAGES=${1:-"./test_images"}
+PATH_TO_IMAGES=${1:-"../drone-sync-service/synced_images"}
 
 # Set the committer information
 git config --local user.name "Wildlife Drone"
