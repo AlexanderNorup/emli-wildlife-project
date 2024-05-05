@@ -1,4 +1,4 @@
-@startuml
+@startuml Motion Photo
 
   participant "Save Motion" as rpiSMotion
   participant "Detect Motion" as rpiDMotion

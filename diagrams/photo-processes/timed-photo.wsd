@@ -1,4 +1,4 @@
-@startuml
+@startuml Timed Photo
 
   participant "Timer" as rpiTime
   participant "Take Photo" as rpiPhoto
