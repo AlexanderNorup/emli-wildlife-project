@@ -1,0 +1,14 @@
+@startuml Annotation of images
+title "Annotation of images"
+
+participant Cloud
+participant "Ollama LLaVA Model" as OLM
+participant "GitHub Repository" as GH
+
+loop all unannotated images on drone 
+Cloud -> OLM : Annotate image
+OLM -> Cloud : Annotated JSON file 
+end
+Cloud -> GH : Upload metadata files
+
+@enduml
