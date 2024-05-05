@@ -1,1 +1,5 @@
-synced_images/
+
+*.jpg
+*.jpeg
+*.png
+.DS_STORE
