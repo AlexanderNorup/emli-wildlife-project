@@ -1,0 +1,90 @@
+@startuml Overview_with_colors
+
+skinparam rectangle {
+    roundCorner<<Process>> 54
+}
+
+frame WildlifeCam {
+
+  frame RaspberryPi {
+    rectangle "Take Photo" <<Process>> as rpiPhoto #yellow
+    rectangle "5 Minute Timer" <<Process>> as rpiTime #yellow
+    rectangle "Detect Motion" <<Process>> as rpiMotion #yellow
+    rectangle "External Subscriber" <<Process>> as rpiExternal #yellow
+    rectangle "Rain Detector" <<Process>> as rpiRain #deepskyblue
+    rectangle "Wipe Controller" <<Process>> as rpiWipe #deepskyblue
+    rectangle "Access Point" as rpiAcc #limegreen
+    rectangle "Web Server" <<Process>> as rpiWeb #violet
+  }
+  note top of RaspberryPi: All processes log events to journald
+  
+  frame ESP8266 {
+    rectangle "Monitor Button" <<Process>> as espTrig #yellow
+    rectangle "Publish Event" <<Process>> as espPublish #yellow
+  }
+  
+  frame RPico {
+    rectangle "Rain detection" <<Process>> as pcDetect #deepskyblue
+    rectangle "Servo Controller" <<Process>> as pcWipe #deepskyblue
+  }
+
+}
+
+frame Drone {
+  label " " as droneLabel
+  rectangle "Connect" <<Process>> as dConnect #limegreen
+  rectangle "Download Images" <<Process>> as dSync #violet
+  rectangle "Log Wifi" <<Process>> as dLogWifi #limegreen
+}
+
+frame Cloud {
+  label " " as cloudLabel
+  rectangle "Annotate" <<Process>> as cAnn #tomato
+  rectangle "Upload" <<Process>> as cUp #tomato
+}
+
+json LEGEND {
+  "<size:18>**Color**": "<size:18>**System**",
+  "Yellow": "Image triggers",
+  "Blue": "Rain detection",
+  "Green": "WiFi Setup",
+  "Pink": "Drone image transfer",
+  "Red": "Cloud"
+}
+
+
+pcDetect -d-> rpiRain : Serial
+rpiRain -> rpiWipe : MQTT
+rpiWipe -u-> pcWipe : Serial
+
+rpiTime -u-> rpiPhoto
+rpiMotion -u-> rpiPhoto
+rpiExternal -u-> rpiPhoto
+
+espTrig -> espPublish
+espPublish -u-> rpiExternal : MQTT
+
+dConnect -> rpiAcc
+dSync <-> rpiWeb : HTTP
+
+droneLabel -d-> cloudLabel : "Transfer Images"
+
+'placement stuff'
+
+rpiMotion -[hidden]right-> rpiExternal
+rpiTime -[hidden]right-> rpiExternal
+
+rpiWeb -[hidden]r-> rpiTime
+rpiAcc -[hidden]d-> rpiWeb
+dSync -[hidden]u-> dConnect
+
+rpiAcc -[hidden]l-> rpiRain
+rpiAcc -[hidden]l-> rpiWipe
+rpiAcc -[hidden]l-> rpiPhoto
+
+cloudLabel -[hidden]l-> cAnn
+droneLabel -[hidden]u-> dLogWifi
+droneLabel -[hidden]l-> dSync
+
+
+@enduml
