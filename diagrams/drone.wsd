@@ -1,0 +1,56 @@
+@startuml Drone
+title "Syncing images from the Wildlife camera to the Drone"
+
+participant "Drone\nShell script" as d
+participant "Wildlife Camera\nPHP Server" as php
+
+activate d
+
+loop while not connected to wifi
+    
+    alt
+        d ->X php: Attempt connect
+        d ->d: Sleep 
+    else
+        d -> php: Connect
+        activate php
+        php --> d: IP 192.168.10.x
+    end
+
+end
+
+ == WiFi connection established ==
+
+d -> php: POST ""/time""\nBody: ""2024-06-03T09:14:01+02:00""
+php -> php: Set device time
+php --> d
+
+d -> php: GET ""/images?unacknowledged=true""
+activate php
+php -> php: Find all images without\n""Drone Copy""
+php --> d: List of images with ID's
+
+loop for each image
+    d->php: GET ""/images/<id>""
+    php -->d: Tarball of image + sidecar file
+    d -> d: Extract tarball
+    break tarball is invalid / incomplete 
+    end
+
+    d->php: POST ""/images/<id>/ack""\nBody: ""Drone-1234""
+    php -> php: Mark image with\n""Drone Copy: Drone-1234""
+    
+    php -->d
+
+
+    break invalid response or timeout
+    end
+    deactivate php
+end
+
+deactivate php
+deactivate d
+
+... The drone sleeps for some time\n and restarts this sequence ...
+
+@enduml
