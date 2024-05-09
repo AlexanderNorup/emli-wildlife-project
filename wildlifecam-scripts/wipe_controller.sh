@@ -1,10 +1,10 @@
 #!/bin/bash
 
-MQTT_HOST="localhost"
-MQTT_TOPIC="rain_sensor"
-MQTT_USER="camera"
-MQTT_PASSWORD="zebra"
-DEVICE="/dev/ttyACM0"
+DEVICE=${1:-"/dev/ttyACM0"}
+MQTT_HOST=${2:-"localhost"}
+MQTT_TOPIC=${3:-"rain_sensor"}
+MQTT_USER=${4:-"camera"}
+MQTT_PASSWORD=${5:-"zebra"}
 
 # Function to control wiper angle
 control_wiper() {

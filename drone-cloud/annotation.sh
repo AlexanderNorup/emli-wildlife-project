@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Ollava endpoint
-ENDPOINT="http://localhost:11434/api/generate"
-
 # Folder containing images and sidecar files
 PATH_TO_IMAGES=${1:-"../drone-sync-service/synced_images"}
 
+# Ollava endpoint
+ENDPOINT=${2:-"http://localhost:11434/api/generate"}
 
 # Function to check if the annotation object already exists in the JSON file
 annotation_exists() {

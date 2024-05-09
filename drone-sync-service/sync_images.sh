@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #Constants
-outputDirectory="synced_images"
-droneName="Drone-1337"
-cameraHost="192.168.10.1"
-apiKey="zebra"
+outputDirectory=${1:-"synced_images"}
+droneName=${2:-"Drone-1337"}
+cameraHost=${3:-"192.168.10.1"}
+apiKey=${4:-"zebra"}
 
 function waitForConnection {
     while curl -s -f $cameraHost > /dev/null ; [ $? -ne 0 ] ; do
