@@ -29,7 +29,8 @@ while true; do
                 rpicam-still -t 0.01 -o $FOLDERNAME/$FILE2
 
                 python3 motion_detect.py $FOLDERNAME/$FILE1 $FOLDERNAME/$FILE2
-                if [ $? -eq 1 ]; then
+                # motion_detect.py has been modifed so it exits with code 0 on motion-detected, and 1 on not-detected.
+                if [ $? -eq 0 ]; then
                         mkdir -p /WildlifeCam/$DATE
 
                         cp $FOLDERNAME/$FILE2 /WildlifeCam/$DATE/$TIMEMS.jpg
