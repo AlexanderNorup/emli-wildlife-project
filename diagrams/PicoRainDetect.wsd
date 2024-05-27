@@ -10,6 +10,8 @@ queue MQTT
 Pico -> RPi : Sense Rain
 RPi -> MQTT : Publish Rain Event 
 MQTT -> RPi : Receive Rain Event
-RPi -> Pico : Send wipe command
+loop wiping lens
+  RPi -> Pico : Send wiper angle
+end
 
 @enduml
