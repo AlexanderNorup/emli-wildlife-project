@@ -12,16 +12,16 @@ cd $PATH_TO_IMAGES || exit
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 commit_message="Annotations - $timestamp"
 
-# Sync git repository
-git pull
-
-# TODO: Add handler here if "git pull" fails due to conflicts.
-
 # Add all JSON files to Git
 git add "*.json"
 
 # Commit the changes with the unique message
 git commit -m "$commit_message"
+
+# Sync git repository
+git pull
+
+# TODO: Add handler here if "git pull" fails due to conflicts.
 
 # Push the changes to the remote repository
 git push
