@@ -1,15 +1,15 @@
 @startuml External Photo
 
-box "ESP32" #LightGreen
+box "ESP32"
   participant "Monitor Button" as espBtn
   participant "MQTT Publisher" as espPub
 end box
 
-box "MQTT Broker" #LightBlue
+box "MQTT Broker"
   participant "MQTT" as mqtt
 end box
 
-box "Raspberry Pi" #LightCoral
+box "Raspberry Pi"
   participant "MQTT Subscriber" as rpiSub
   participant "Take Photo" as rpiPhoto
   participant "Create Metadata" as rpiMeta
