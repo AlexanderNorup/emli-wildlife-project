@@ -1,0 +1,20 @@
+@startuml WiFi setup and logging
+
+participant "fly.sh" as fly
+participant "log_signal_quality.sh" as log
+
+loop
+  loop while !check_connection()
+    fly -> fly : connect_wifi()
+  end
+  
+  loop while check_connection()
+    fly -> log
+    log -> log : get link quality\nand signal level
+    log -> log : get epoch time
+    log -> log : log to database
+    log -> fly
+    fly -> fly : sleep 2
+  end
+end
+@enduml

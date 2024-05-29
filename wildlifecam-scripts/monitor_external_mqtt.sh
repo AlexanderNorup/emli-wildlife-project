@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MQTT_HOST="localhost"
-MQTT_TOPIC="external/take_picture"
-MQTT_USER="camera"
-MQTT_PASSWORD="zebra"
+MQTT_HOST=${1:-"localhost"}
+MQTT_TOPIC=${2:-"external/take_picture"}
+MQTT_USER=${3:-"camera"}
+MQTT_PASSWORD=${4:-"zebra"}
 
 while read msg
 do

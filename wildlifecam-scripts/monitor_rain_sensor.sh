@@ -1,9 +1,10 @@
 #!/bin/bash
-MQTT_HOST="localhost"
-MQTT_TOPIC="rain_sensor"
-MQTT_USER="camera"
-MQTT_PASSWORD="zebra"
-DEVICE="/dev/ttyACM0"
+
+DEVICE=${1:-"/dev/ttyACM0"}
+MQTT_HOST=${2:-"localhost"}
+MQTT_TOPIC=${3:-"rain_sensor"}
+MQTT_USER=${4:-"camera"}
+MQTT_PASSWORD=${5:-"zebra"}
 
 publish_message() {
     mosquitto_pub -h $MQTT_HOST -t $MQTT_TOPIC -m "raining" -u $MQTT_USER -P $MQTT_PASSWORD

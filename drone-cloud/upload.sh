@@ -18,6 +18,11 @@ git add "*.json"
 # Commit the changes with the unique message
 git commit -m "$commit_message"
 
+# Sync git repository
+git pull
+
+# TODO: Add handler here if "git pull" fails due to conflicts.
+
 # Push the changes to the remote repository
 git push
 
