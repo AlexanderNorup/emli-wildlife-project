@@ -9,11 +9,11 @@ rpiSMotion -> rpiSMotion : Take Photo Using rpicam
 
 loop
     rpiSMotion -> rpiSMotion : Get Current Time
-    alt Time Since Last Photo >= 1 Second
+    opt Time Since Last Photo >= 1 Second
       rpiSMotion -> rpiSMotion : Take Photo Using rpicam
       rpiSMotion -> rpiDMotion : Previous and Current Photo
       rpiDMotion -> rpiSMotion : return Motion/No Motion
-      alt Motion Detected
+      opt Motion Detected
         rpiSMotion -> rpiMeta : Trigger: Motion
         rpiMeta -> rpiSMotion : Return Metadata
         rpiSMotion -> rpiSMotion : Save Photo & Metadata
