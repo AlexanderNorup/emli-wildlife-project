@@ -7,12 +7,12 @@ skinparam rectangle {
 frame WildlifeCam {
 
   frame RaspberryPi {
-    rectangle "Take Photo" <<Process>> as rpiPhoto #yellow
-    rectangle "5 Minute Timer" <<Process>> as rpiTime #yellow
-    rectangle "Detect Motion" <<Process>> as rpiMotion #yellow
-    rectangle "External Subscriber" <<Process>> as rpiExternal #yellow
-    rectangle "Rain Detector" <<Process>> as rpiRain #deepskyblue
-    rectangle "Wipe Controller" <<Process>> as rpiWipe #deepskyblue
+    rectangle "Take Photo" <<Script>> as rpiPhoto #yellow
+    rectangle "5 Minute Timer" <<Script>> as rpiTime #yellow
+    rectangle "Detect Motion" <<Script>> as rpiMotion #yellow
+    rectangle "External Subscriber" <<Script>> as rpiExternal #yellow
+    rectangle "Rain Detector" <<Script>> as rpiRain #deepskyblue
+    rectangle "Wipe Controller" <<Script>> as rpiWipe #deepskyblue
     rectangle "Access Point" as rpiAcc #limegreen
     rectangle "Web Server" <<Process>> as rpiWeb #violet
   }
@@ -32,15 +32,15 @@ frame WildlifeCam {
 
 frame Drone {
   label " " as droneLabel
-  rectangle "Connect" <<Process>> as dConnect #limegreen
-  rectangle "Download Images" <<Process>> as dSync #violet
-  rectangle "Log Wifi" <<Process>> as dLogWifi #limegreen
+  rectangle "Connect" <<Script>> as dConnect #limegreen
+  rectangle "Download Images" <<Script>> as dSync #violet
+  rectangle "Log Wifi" <<Script>> as dLogWifi #limegreen
 }
 
 frame Cloud {
   label " " as cloudLabel
-  rectangle "Annotate" <<Process>> as cAnn #tomato
-  rectangle "Upload" <<Process>> as cUp #tomato
+  rectangle "Annotate" <<Script>> as cAnn #tomato
+  rectangle "Upload" <<Script>> as cUp #tomato
 }
 
 json LEGEND {
